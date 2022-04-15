@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Demo Implicit: Redirect</title>
+  </head>
+  <body>
+    Redirect page (check console)
+  </body>
+  <script>
+    // 1. Get hash from redirect URL
+    const redirectHashStr = window.location.hash.substring(1);
+
+    // 2.  Make object from all hash params:
+    const hashParams = new URLSearchParams(redirectHashStr);
+    const redirectData = {};
+    hashParams.forEach(function (value, key) {
+      redirectData[key] = value;
+    });
+
+    // 3. Log data
+    console.log("Data from GitLab:", redirectData);
+  </script>
+</html>

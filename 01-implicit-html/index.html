@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Demo Implicit: Index</title>
+  </head>
+  <body>
+    <p>GitLab Implicit Grant:</p>
+    <button onclick="authrorizeGitLab()">Authorize GitLab</button>
+  </body>
+  <script>
+    function authrorizeGitLab() {
+      // 1. Construct params for redirect
+      const authParams = {
+        client_id:
+          "2ca4cc0c4f1707a97116e19268f01719d525d70e156849dfba89ae168dd59c68",
+        redirect_uri: "http://127.0.0.1:8080/redirect-here.html",
+        response_type: "token",
+        state: "TMP_STR",
+        scope: "api",
+      };
+
+      // 2. Make redirect URI
+      const queryParams = new URLSearchParams(authParams).toString();
+      const redirectURI = "https://gitlab.com/oauth/authorize?" + queryParams;
+
+      // 3. Redirect to GitLab in the same tab
+      window.open(redirectURI, "_self");
+    }
+  </script>
+</html>
